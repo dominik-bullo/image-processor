@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { APICtrl } from './controller'
+import APICtrl from './controller'
 
 const router: Router = Router()
 

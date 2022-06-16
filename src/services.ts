@@ -1,7 +1,7 @@
 export class APIService {
-    static getHello(): string {
+    getHello(): string {
         return 'Hello World!'
     }
 }
 
-export default APIService
+export default new APIService()
