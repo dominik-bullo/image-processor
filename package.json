@@ -4,10 +4,11 @@
     "description": "An image processing API.",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon src/index.ts",
+        "start": "nodemon ./src/index.ts",
         "build": "npx tsc",
         "lint": "eslint . --ext .ts",
-        "prettier": "prettier --config .prettierrc 'src/**/*.ts' --write"
+        "prettier": "prettier --config .prettierrc */*.ts --write",
+        "test": "jest"
     },
     "repository": {
         "type": "git",
@@ -20,21 +21,50 @@
     },
     "homepage": "https://github.com/dominik-bullo/image-processor#readme",
     "devDependencies": {
+        "@types/express": "^4.17.13",
+        "@types/jest": "^28.1.1",
         "@types/node": "^17.0.41",
         "@types/sharp": "^0.30.4",
+        "@types/supertest": "^2.0.12",
         "@typescript-eslint/eslint-plugin": "^5.27.1",
         "@typescript-eslint/parser": "^5.27.1",
-        "@types/express": "^4.17.13",
+        "babel-cli": "^6.26.0",
+        "babel-preset-env": "^1.7.0",
         "eslint": "^8.17.0",
         "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-jest": "^26.5.3",
         "eslint-plugin-prettier": "^4.0.0",
+        "jest": "^28.1.1",
         "nodemon": "^2.0.16",
         "prettier": "^2.6.2",
+        "superagent": "^7.1.6",
+        "supertest": "^6.2.3",
+        "ts-jest": "^28.0.5",
         "ts-node": "^10.8.1",
         "typescript": "^4.7.3"
     },
     "dependencies": {
         "express": "^4.18.1",
         "sharp": "^0.30.6"
+    },
+    "jest": {
+        "preset": "ts-jest",
+        "testEnvironment": "node",
+        "collectCoverage": true,
+        "collectCoverageFrom": [
+            "./src/**"
+        ],
+        "coverageThreshold": {
+            "global": {
+                "lines": 85
+            }
+        },
+        "coveragePathIgnorePatterns": [
+            "/node_modules/",
+            "/build/"
+        ],
+        "testPathIgnorePatterns": [
+            "build/"
+        ]
     }
 }
