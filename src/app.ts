@@ -1,8 +1,11 @@
 import express, { Application } from 'express'
-import placeholderRouter from './routes/placeholder'
+import routes from './routes'
+import { logger } from './middleware'
 
 const app: Application = express()
 
-app.use('/placeholder', placeholderRouter)
+app.use(logger)
+
+app.use('/api', routes)
 
 export default app
