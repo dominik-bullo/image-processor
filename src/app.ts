@@ -1,8 +1,8 @@
 import express, { Application } from 'express'
-import router from './router'
+import placeholderRouter from './routes/placeholder'
 
 const app: Application = express()
 
-app.use('/', router)
+app.use('/placeholder', placeholderRouter)
 
 export default app
