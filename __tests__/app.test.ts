@@ -2,14 +2,6 @@ import request from 'supertest'
 import app from '../src/app'
 import sharp from 'sharp'
 
-describe('Server', () => {
-    it('should response the GET method', async () => {
-        const response = await request(app).get('/hello')
-        expect(response.statusCode).toBe(200)
-        expect(response.text).toBe('Hello World!')
-    })
-})
-
 describe('Placeholder API', () => {
     it('should return a SVG of the desired size', async () => {
         const response = await request(app).get('/placeholder/123/456')

@@ -2,10 +2,6 @@ import { Request, Response } from 'express'
 import APIService from './services'
 
 export class APICtrl {
-    getHello(req: Request, res: Response): void {
-        res.send(APIService.getHello())
-    }
-
     getPlaceholder(req: Request, res: Response): void {
         const width = Number(req.params.width)
         const height = Number(req.params.height)
