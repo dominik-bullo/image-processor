@@ -11,6 +11,9 @@ export class APICtrl {
         }
         res.send(APIService.getPlaceholder(width, height))
     }
+    getImages(req: Request, res: Response): void {
+        res.send(APIService.getImages())
+    }
 }
 
 export default new APICtrl()
