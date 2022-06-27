@@ -44,7 +44,6 @@ describe('Image resizing API', () => {
     })
 
     it("should save the image to the cache if it doesn't exist", async () => {
-        console.log(resizedImageFiles)
         const imageName = 'cat'
         const fileName = `${imageName}_123x456.png`
         const filePath = path.resolve('./cache/resized', fileName)
@@ -53,7 +52,6 @@ describe('Image resizing API', () => {
             for (let i = 0; i < resizedImageFiles.length; i++) {
                 if (resizedImageFiles[i] === fileName) {
                     resizedImageFiles.splice(i, 1)
-                    console.log(resizedImageFiles)
                     break
                 }
             }
