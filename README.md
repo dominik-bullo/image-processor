@@ -34,7 +34,7 @@ Will return a placeholder as `*.png` in the desired size. If only width is provi
 
 Example:
 
-```javascript
+```
 /api/placeholder/300/200   // 300px * 200px
 /api/placeholder/100       // 100px * 100px
 ```
@@ -45,7 +45,7 @@ Returns an array with all available image names.
 
 Example:
 
-```javascript
+```
 /api/images  // => ["image1", "image2", "image3"]
 ```
 
@@ -55,7 +55,7 @@ Returns the resized image. If only width is provided, a sqaured image will be re
 
 Example:
 
-```javascript
+```
 /api/images/cat?width=300&height=200 // cat.jpg as PNG resized to 300px * 200px
 /api/images/dog?width=150            // dog.jpg as PNG resized to 150px * 150px
 ```
