@@ -58,7 +58,7 @@ describe('Image resizing API', () => {
         }
         const response = await request(app).get('/api/images/cat?width=123&height=456')
         expect(response.statusCode).toBe(200)
-        expect(fs.existsSync(path.resolve('./cache/resized/cat_123x456.png'))).toBe(true)
+        expect(fs.existsSync(path.resolve(filePath))).toBe(true)
     })
 
     it('should return sqaured image if only width is provided', async () => {
