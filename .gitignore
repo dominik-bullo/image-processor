@@ -1,5 +1,5 @@
 node_modules
 build
-cache/placeholder/*
-cache/resized/*
+cache/placeholder/*.png
+cache/resized/*.png
 coverage
