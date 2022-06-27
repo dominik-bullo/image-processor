@@ -1,6 +1,9 @@
 import request from 'supertest'
 import app from '../src/app'
+import { resizedImageFiles } from '../src/app'
 import sharp from 'sharp'
+import path from 'path'
+import fs from 'fs'
 
 describe('Placeholder API', () => {
     it('should return image of the desired size', async () => {
@@ -38,6 +41,26 @@ describe('Image resizing API', () => {
         expect(response.statusCode).toBe(200)
         expect(metadata.width).toBe(123)
         expect(metadata.height).toBe(456)
+    })
+
+    it("should save the image to the cache if it doesn't exist", async () => {
+        console.log(resizedImageFiles)
+        const imageName = 'cat'
+        const fileName = `${imageName}_123x456.png`
+        const filePath = path.resolve('./cache/resized', fileName)
+        if (fs.existsSync(filePath)) {
+            fs.unlinkSync(filePath)
+            for (let i = 0; i < resizedImageFiles.length; i++) {
+                if (resizedImageFiles[i] === fileName) {
+                    resizedImageFiles.splice(i, 1)
+                    console.log(resizedImageFiles)
+                    break
+                }
+            }
+        }
+        const response = await request(app).get('/api/images/cat?width=123&height=456')
+        expect(response.statusCode).toBe(200)
+        expect(fs.existsSync(path.resolve('./cache/resized/cat_123x456.png'))).toBe(true)
     })
 
     it('should return sqaured image if only width is provided', async () => {
