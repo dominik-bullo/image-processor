@@ -1,4 +1,4 @@
 node_modules
 build
-images/placeholder/*
-images/resized/*
+cache/placeholder/*
+cache/resized/*

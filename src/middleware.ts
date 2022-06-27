@@ -5,13 +5,6 @@ import { imageFiles } from './app'
 const MIN_IMAGE_DIMENSION = 1
 const MAX_IMAGE_DIMENSION = 3000
 
-export const logger = (req: Request, res: Response, next: NextFunction): void => {
-    const localTime = new Date().toLocaleString()
-    const data = `[${localTime}] ${req.method} ${req.path}   (Query: ${JSON.stringify(req.query)})`
-    console.log(data)
-    next()
-}
-
 export const placeholderValidation = (req: Request, res: Response, next: NextFunction): void => {
     const width = Number(req.params.width)
     const height = Number(req.params.height) || width

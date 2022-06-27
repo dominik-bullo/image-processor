@@ -11,14 +11,14 @@ describe('Placeholder API', () => {
         expect(metadata.height).toBe(456)
     })
 
-    it('should return a sqaured image if only one dimension is provided', async () => {
+    it('should return sqaured image if only one dimension is provided', async () => {
         const response = await request(app).get('/api/placeholder/123')
         const metadata = await sharp(response.body).metadata()
         expect(response.statusCode).toBe(200)
         expect(metadata.width).toEqual(metadata.height)
     })
 
-    it('should throw an error if the size is not a number', async () => {
+    it('should throw error 400 if the size is not a number', async () => {
         const response = await request(app).get('/api/placeholder/x/y')
         expect(response.statusCode).toBe(400)
         expect(response.text).toContain('Invalid width or height')
@@ -29,10 +29,10 @@ describe('Image resizing API', () => {
     it('should return array of available image names', async () => {
         const response = await request(app).get('/api/images')
         expect(response.statusCode).toBe(200)
-        expect(response.body).toEqual(expect.arrayContaining([]))
+        expect(response.body).toEqual(expect.arrayContaining(['cat', 'dog']))
     })
 
-    it('should return the image in the desired size', async () => {
+    it('should return image in the desired size', async () => {
         const response = await request(app).get('/api/images/cat?width=123&height=456')
         const metadata = await sharp(response.body).metadata()
         expect(response.statusCode).toBe(200)
@@ -40,7 +40,7 @@ describe('Image resizing API', () => {
         expect(metadata.height).toBe(456)
     })
 
-    it('should return a sqaure if only width is provided', async () => {
+    it('should return sqaured image if only width is provided', async () => {
         const response = await request(app).get('/api/images/cat?width=123')
         const metadata = await sharp(response.body).metadata()
         expect(response.statusCode).toBe(200)

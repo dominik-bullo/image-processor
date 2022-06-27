@@ -4,6 +4,6 @@ import { imageResizingValidation } from '../../middleware'
 
 const images: Router = Router()
 
-images.get('/', APICtrl.getImageList).get('/:imageName', imageResizingValidation, APICtrl.getResizedImage)
+images.get('/', APICtrl.getImageNames).get('/:imageName', imageResizingValidation, APICtrl.getResizedImage)
 
 export default images

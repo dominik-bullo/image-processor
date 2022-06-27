@@ -8,12 +8,11 @@ export class APICtrl {
             const height = Number(req.params.height) || width
             res.sendFile(await APIService.getPlaceholder(width, height))
         } catch (err: unknown) {
-            console.error(err)
             res.sendStatus(500).send('Processing Error, please try again later')
         }
     }
 
-    getImageList(req: Request, res: Response): void {
+    getImageNames(req: Request, res: Response): void {
         try {
             res.send(APIService.getImageList())
         } catch (err: unknown) {

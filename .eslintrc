@@ -3,7 +3,6 @@
     "parser": "@typescript-eslint/parser",
     "plugins": ["@typescript-eslint", "prettier", "jest"],
     "rules": {
-        "no-console": 1,
         "no-var": 2
     },
     "parserOptions": {
