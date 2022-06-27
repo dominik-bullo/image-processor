@@ -25,16 +25,20 @@ export class APIService {
         return imageFiles
     }
 
+    async resizeImage(imageName: string, width: number, height: number, filePath: string): Promise<void> {
+        await sharp(path.resolve(`./public/images/${imageName}.jpg`))
+            .resize(width, height)
+            .png()
+            .toFile(filePath)
+    }
+
     async getResizedImage(imageName: string, width: number, height: number): Promise<string> {
         const fileName = `${imageName}_${width}x${height}.png`
         const filePath = path.resolve('./cache/resized', fileName)
         if (resizedImageFiles.includes(fileName)) {
             return filePath
         }
-        await sharp(path.resolve(`./public/images/${imageName}.jpg`))
-            .resize(width, height)
-            .png()
-            .toFile(filePath)
+        await this.resizeImage(imageName, width, height, filePath)
         resizedImageFiles.push(fileName)
         return filePath
     }
